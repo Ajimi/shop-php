@@ -46,3 +46,9 @@
 	</div>
 
 </div>		
+<!-- The popover content -->
+
+<div id="popover" style="display: none">
+	<a href="#0"><span class="glyphicon glyphicon-plus"></span></a>
+	<a href="#""><span class="glyphicon glyphicon-remove"></span></a>
+</div>

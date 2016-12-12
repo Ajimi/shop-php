@@ -23,6 +23,8 @@ class Product{
 			throw new Exception('There was a problem updating');
 		}
 	}
+	
+
 	public function findAll(){
 		
 		$data = $this->_db->query("SELECT * FROM product GROUP BY product_reference ");
@@ -34,52 +36,89 @@ class Product{
 		return false;
 	}
 
-	public function find ($product = null){
+	public function find ($product = null , $field = 'id'){
 		if($product){
-			$field = (is_numeric($product)) ? 'product_id' : 'product_reference';
+			$field = ($field == 'ref') ? 'product_reference' : 'product_id';
 			$data = $this->_db->get('product' , array($field , '=' , $product));
 			if($data->count()){
-				$this->_data = $data->first();
+				if($field == 'product_id'){
+					$this->_data = $data->first();
+				}
+				else {
+					$this->_data = $data->results();
+				}
 				return true;
 			}
 		}
 		return false;
 	}
+
+	public function incrementProductQuantity($id = '1'){
+		$value = 0;
+		$name = 'product_'. $id ;
+		if(!Session::exists($name)){
+					Session::put($name, $value);
+		}
+		if($this->find($id , 'id')){
+			$data = $this->data();
+			$value = Session::get($name);
+			if($data->product_quantity != $value){
+
+				$value++;
+				Session::put($name, $value);
+			} else {
+				if($data->product_quantity == 0){
+					echo "out of stock";
+				} else {
+					echo "We only have ". $data->product_quantity. " available <br>" ;
+				}
+			}
+		} else {
+			// No existant of product
+			echo "There's no product with id " . $id;
+		}
+		echo $name ." contain " . Session::get($name);
+		// Redirect::to('index.php ');
+	}
+
+	public function showByReference($product){
+		if($this->find($product,'ref')){
+			$datas = $this->data();
+			foreach ($datas as $data){
+				echo $data->product_name . "<br>";
+				echo "Price &dollar;" . $data->product_price . "<br>";
+				echo "<a href='get.php?add={$data->product_id}'>ADD</a><br>";
+			}
+		}
+	}
+
 	public function show(){
 		if($this->findAll()){
 			$datas = $this->data();
 			foreach ($datas as $data) {
-				if($data->product_quantity == 0){
-					$existant = '<span class="product-out-of-stock">Out of stock</span>';
-				} else {
-					$existant = "<a href='item.php?id={$data->product_id}'><button >PRODUCT</button></a>";
-				}
+				$productScheme = <<< LIMIT
+				<li>
+				<a href="#" class="product-photo">
+				<img src="{$data->product_image}" height="130" alt="{$data->product_name}"/>
+				</a>
 
-$productScheme = <<< DELIMTER
-<li>
-<a href="#" class="product-photo">
-<img src="{$data->product_image}" height="130" alt="{$data->product_name}"/>
-</a>
+				<h2><a href="#">{$data->product_name}</a></h2>
+				<a href="#" class="product-compare">compare</a>
 
-<h2><a href="#">{$data->product_name}</a></h2>
-<a href="#" class="product-compare">compare</a>
+				<div class="product-rating">
+				<div>
+				<span class="product-stars" style="width: 60px" >
+				<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+				</span>
+				</div>
 
-<div class="product-rating">
-<div>
-<span class="product-stars" style="width: 60px" >
-<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-</span>
-</div>
+				<span><a href="#">{$data->product_reviews} reviews</a></span>
+				</div>
 
-<span><a href="#">{$data->product_reviews} reviews</a></span>
-</div>
-
-<p class="product-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ornare sem sed nisl dignissim, facilisis dapibus lacus vulputate. Sed lacinia lacinia magna.</p>
-{$existant}
-
-</li>
-
-DELIMTER;
+				<p class="product-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ornare sem sed nisl dignissim, facilisis dapibus lacus vulputate. Sed lacinia lacinia magna.</p>
+				<a href='item.php?ref={$data->product_reference}'><button >PRODUCT</button></a>
+				</li>
+LIMIT;
 				echo $productScheme;
 			}
 		}
@@ -88,7 +127,7 @@ DELIMTER;
         return $this->_data;
     }
     public function countData(){
-    	return $this->_data->count();
+    	return $this->data()->count();
     }
 
     public function exists() {

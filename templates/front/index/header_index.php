@@ -34,3 +34,5 @@
             <li><a href="#0">Contact</a></li>
         </ul>
     </nav>
+
+    <?php include TEMPLATE_FRONT . DS . 'side_cart.php' ?> 
