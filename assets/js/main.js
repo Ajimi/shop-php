@@ -16,7 +16,8 @@ jQuery(document).ready(function($){
 		  url:'remove.php',
 		  data:$result,
 		  success: function(data){
-
+		  		console.log(data);
+		  		$('#total').text("$ " + data);
 			}
 		});
 		$(this).parent().fadeOut(300);

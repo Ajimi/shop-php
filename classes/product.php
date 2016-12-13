@@ -55,8 +55,6 @@ class Product{
 	}
 
 
-	
-
 	public function showByReference($product){
 		if($this->find($product,'ref')){
 			$datas = $this->data();
@@ -68,7 +66,7 @@ class Product{
 		}
 	}
 
-	public function show(){
+	public function showProduct(){
 		if($this->findAll()){
 			$datas = $this->data();
 			foreach ($datas as $data) {

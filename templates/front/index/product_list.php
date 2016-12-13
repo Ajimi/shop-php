@@ -3,7 +3,7 @@ require_once 'core/init.php';
 $product = new Product();
 
 ?>
-<?php $product->show(); ?>
+<?php $product->showProduct(); ?>
 
 <!--<li>
 

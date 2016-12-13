@@ -41,21 +41,24 @@ class Cart{
 	}
 	public function updateTotal($price = 0){
 		$total = Session::get('total');
-		$total -= $price;
-		Session::put('total') = $total;
+		$total = $total - $price;
+		Session::put('total' , $total);
+
 	}
+	
 	public function deleteSession(){
-		if(Input::exists('get')){
+		$requestType = 'get';
+		if(Input::exists($requestType)){
 			$id = Input::get('id');
-			
 			$quantity = Session::get('product_'.$id);
-			if($this->find($id ,'id')){
+			if($this->find($id,'id')){
 				$data = $this->data();
-				$price = $data->product_price * $quantity; 
+				$price = $data->product_price * $quantity;
 				$this->updateTotal($price);
 			}
-			Session::delete('product_'.$id)
+			Session::delete('product_'.$id);
 		}
+		echo Session::get('total');
 	}
 
 	public function showItemCart(){
