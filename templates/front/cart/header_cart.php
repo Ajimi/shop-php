@@ -25,10 +25,16 @@
             <li><a href="index.php">Shop</a></li>
             <li><a href="#0">About</a></li>
             <li><a href="#0">Services</a></li>
-            <li><a href="#0">Gallery</a></li>
-            <li><a class="current" href="cart.php">Checkout</a></li>
+            <li><a href="items.php">Items</a></li>
+            <li><a class="current" href="checkout.php">Checkout</a></li>
             <li><a href="#0">Contact</a></li>
             <li><a href="#0">Contact</a></li>
         </ul>
     </nav>
+    <div class="top container-fluid breadcrumbBox text-center">
+        <ol class="breadcrumb">
+            <li class="active"><a href="#">Order</a></li>
+            <li><a href="#">Payment</a></li>
+        </ol>
+    </div>
 <?php include TEMPLATE_FRONT . DS . 'side_cart.php' ?> 

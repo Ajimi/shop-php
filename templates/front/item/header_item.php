@@ -25,11 +25,11 @@
 
     <nav id="main-nav">
         <ul>
-            <li><a  href="#0">Shop</a></li>
+            <li><a  href="index.php">Shop</a></li>
             <li><a href="#0">About</a></li>
             <li><a href="#0">Services</a></li>
             <li><a class="current" href="items.php">Items</a></li>
-            <li><a href="cart.php">Checkout</a></li>
+            <li><a href="checkout.php">Checkout</a></li>
             <li><a href="#0">Contact</a></li>
             <li><a href="#0">Contact</a></li>
         </ul>

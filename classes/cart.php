@@ -61,7 +61,7 @@ class Cart{
 		echo Session::get('total');
 	}
 
-	public function showItemCart(){
+	public function showItemCart($pos = 0){
 		$total = 0;
 		foreach ($_SESSION as $name => $value) {
 			if($this->isProduct($name)){
@@ -71,14 +71,26 @@ class Cart{
 					$data = $this->data();
 					$price = $data->product_price * $quantity; 
 					$total += $price;
-					Session::put('total' , $total); 
-					$cartItem = <<< DELIMITER
-					<li>
-					    <span class="cd-qty">{$quantity} x</span> {$data->product_name}
-					    <div class="cd-price"> &dollar;{$price}</div>
-					    <a href="#{$id}" class="cd-item-remove cd-img-replace remove-item" >Remove</a>
-					</li>
+					Session::put('total' , $total);
+					if($pos == 0){ 
+						$cartItem = <<< DELIMITER
+						<li>
+						    <span class="cd-qty">{$quantity} x</span> {$data->product_name}
+						    <div class="cd-price"> &dollar;{$price}.00</div>
+						    <a href="#{$id}" class="cd-item-remove cd-img-replace remove-item" >Remove</a>
+						</li>
 DELIMITER;
+						
+					} else {
+						$cartItem = <<< LIMIT
+						<li class="row" href="#{$data->product_id}">
+							<span class="quantity">{$quantity}</span>
+							<span class="itemName">{$data->product_name}</span>
+							<span class="popbtn"><a class="arrow"></a></span>
+							<span class="price">&dollar;{$price}.00</span>
+						</li>
+LIMIT;
+					}
 					echo $cartItem;
 				}
 

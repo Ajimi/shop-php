@@ -21,8 +21,6 @@ jQuery(document).ready(function($){
 			}
 		});
 		$(this).parent().fadeOut(300);
-		
-		
 	});
 
 	$('.add-to-cart').on('click', function(){
