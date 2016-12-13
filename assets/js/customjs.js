@@ -65,7 +65,20 @@ $(function() {
 
 	$(document).on('click' , '.add-quantity', function(){
 		$hash = $(this).attr('href');
-
+		$id = $hash.substring(1);
+		$quantity = $("li[href='"+$hash+"'] .quantity");
+		console.log($id);
+		$result = "add="+$id;
+		$.ajax({
+		  type:'GET',
+		  url:'addToCart.php',
+		  data:$result,
+		  success: function(data){
+		  		console.log(data);
+		  		$quantity.text(data);
+			}
+		});
+		$('quantity')
 	});
 
 });

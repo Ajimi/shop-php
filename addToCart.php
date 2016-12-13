@@ -4,8 +4,9 @@
 	$cart = new Cart();	
 	if(Input::exists('get')){
 		$id = Input::get('add');
-		echo $id;
+		//echo $id;
 		$cart->incrementProductQuantity($id);
+		echo Session::get('product_'.$id);
 	}
 ?>
 

@@ -115,17 +115,17 @@ LIMIT;
 				Session::put($name, $value);
 			} else {
 				if($data->product_quantity == 0){
-					echo "out of stock";
+					//echo "out of stock";
 				} else {
 					// Error message creation ..
-					echo "We only have ". $data->product_quantity. " available <br>" ;
+					//echo "We only have ". $data->product_quantity. " available <br>" ;
 				}
 			}
 		} else {
 			// No existant of product
-			echo "There's no product with id " . $id;
+			// echo "There's no product with id " . $id;
 		}
-		echo $name ." contain " . Session::get($name);
+		// echo $name ." contain " . Session::get($name);
 		// Redirect::to('index.php ');
 	}
 
