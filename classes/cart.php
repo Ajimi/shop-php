@@ -88,7 +88,7 @@ DELIMITER;
 			}
 		}
 	}
-	public function incrementProductQuantity($id = '1'){
+	public function incrementProductQuantity($id = '0'){
 		$value = 0;
 		$name = 'product_'. $id ;
 		if(!Session::exists($name)){

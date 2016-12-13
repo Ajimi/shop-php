@@ -8,12 +8,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Product items</title>
-
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="assets/css/style.css"> <!-- Gem style -->
     <link rel="stylesheet" href="assets/css/vertical.css">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
     <script src="assets/js/modernizr.js"></script> <!-- Modernizr -->
-    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css"/>
+    
 </head>
 <body>
     <header>

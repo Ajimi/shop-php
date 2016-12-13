@@ -17,12 +17,26 @@ jQuery(document).ready(function($){
 		  data:$result,
 		  success: function(data){
 		  		console.log(data);
-		  		$('#total').text("$ " + data);
+		  		$('#total').text("$"+data+".00");
 			}
 		});
 		$(this).parent().fadeOut(300);
 		
 		
+	});
+
+	$('.add-to-cart').on('click', function(){
+		console.log($(this));
+		$result = $(this).val();
+		console.log($result);
+		$.ajax({
+		  type:'GET',
+		  url:'addToCart.php',
+		  data:"add="+$result,
+		  success: function(data){
+		  		console.log('Work success');
+			}
+		});
 	});
 	//open lateral menu on mobile
 	$hamburger_icon.on('click', function(event){

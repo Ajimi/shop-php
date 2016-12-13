@@ -7,7 +7,7 @@
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css"/>
 		<link rel="stylesheet" type="text/css" href="assets/css/custom.css"/>
- 		<link rel="stylesheet" href="assets/css/style.css"> <!-- Gem style -->
+ 		<link rel="stylesheet" href="assets/css/styles.css"> <!-- Gem style -->
     
     <script src="assets/js/modernizr.js"></script> <!-- Modernizr -->	
     

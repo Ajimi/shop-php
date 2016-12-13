@@ -65,7 +65,44 @@ class Product{
 			}
 		}
 	}
+	public function showProductByReference($product){
+		if($this->find($product , 'ref')){
+			$datas = $this->data();
+			foreach($datas as $data){
+				$productScheme = <<< DELIMITER
+				<li>
+				    
+				    <a href="#" class="product-photo">
+				        <img src="{$data->product_image}" height="160" alt="{$data->product_name}" />
+				    </a>
 
+				    <div class="product-details">
+				        <a href="#" class="product-compare">compare</a>
+
+				        <h2><a href="#">{$data->product_name}</a></h2>
+
+				        <div class="product-rating">
+				            <div>
+				                <span class="product-stars" style="width: 60px" >
+				                    <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+				                </span>
+				            </div>
+
+				            <span><a href="#">{$data->product_reviews} reviews</a></span>
+				        </div>
+
+
+				        <p class="product-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ornare sem sed nisl dignissim, facilisis dapibus lacus vulputate. Sed lacinia lacinia magna.</p>
+
+				        <button class='add-to-cart' value ='{$data->product_id}'>Buy Now!</button>
+				        <p class="product-price">&dollar;{$data->product_price}.00</p>
+				    </div>
+				</li>
+DELIMITER;
+				echo $productScheme;
+			}
+		}	
+	}
 	public function showProduct(){
 		if($this->findAll()){
 			$datas = $this->data();
@@ -90,7 +127,7 @@ class Product{
 				</div>
 
 				<p class="product-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ornare sem sed nisl dignissim, facilisis dapibus lacus vulputate. Sed lacinia lacinia magna.</p>
-				<a href='item.php?ref={$data->product_reference}'><button >PRODUCT</button></a>
+				<a href='items.php?ref={$data->product_reference}'><button >PRODUCT</button></a>
 				</li>
 LIMIT;
 				echo $productScheme;

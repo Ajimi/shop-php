@@ -3,7 +3,7 @@
 	$product = new Product();
 	$requestType = 'get';
 	if(Input::exists($requestType)){
-		$product->showByReference(Input::get('ref'));
+		$product->showProductByReference(Input::get('ref'));
 	} else {
 		
 	}

@@ -14,7 +14,7 @@
     </ul> <!-- cd-cart-items -->
 
     <div class="cd-cart-total">
-        <p>Total <span id="total">$<?php echo Session::get('total'); ?></span></p>
+        <p>Total <span id="total">$<?php echo Session::get('total') ; ?>.00</span></p>
     </div> <!-- cd-cart-total -->
 
     <a href="#0" class="checkout-btn">Checkout</a>
