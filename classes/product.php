@@ -26,8 +26,7 @@ class Product{
 	
 
 	public function findAll(){
-		
-		$data = $this->_db->query("SELECT * FROM product GROUP BY product_reference ");
+		$data = $this->_db->query('SELECT * FROM product GROUP BY product_reference');
 		//echo $data->count();
 		if($data->count()){
 			$this->_data = $data->results();
@@ -35,6 +34,8 @@ class Product{
 		}
 		return false;
 	}
+		
+	
 
 	public function find ($product = null , $field = 'id'){
 		if($product){
@@ -53,33 +54,8 @@ class Product{
 		return false;
 	}
 
-	public function incrementProductQuantity($id = '1'){
-		$value = 0;
-		$name = 'product_'. $id ;
-		if(!Session::exists($name)){
-					Session::put($name, $value);
-		}
-		if($this->find($id , 'id')){
-			$data = $this->data();
-			$value = Session::get($name);
-			if($data->product_quantity != $value){
 
-				$value++;
-				Session::put($name, $value);
-			} else {
-				if($data->product_quantity == 0){
-					echo "out of stock";
-				} else {
-					echo "We only have ". $data->product_quantity. " available <br>" ;
-				}
-			}
-		} else {
-			// No existant of product
-			echo "There's no product with id " . $id;
-		}
-		echo $name ." contain " . Session::get($name);
-		// Redirect::to('index.php ');
-	}
+	
 
 	public function showByReference($product){
 		if($this->find($product,'ref')){

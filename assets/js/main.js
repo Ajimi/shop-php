@@ -6,7 +6,23 @@ jQuery(document).ready(function($){
 		$hamburger_icon = $('#cd-hamburger-menu'),
 		$lateral_cart = $('#cd-cart'),
 		$shadow_layer = $('#cd-shadow-layer');
+	$('.remove-item').on('click' , function(){
+		$hash = $(this)[0].hash; 
+		$id = $hash.substring(1);
+		console.log($id);
+		$result = "id="+$id;
+		$.ajax({
+		  type:'GET',
+		  url:'remove.php',
+		  data:$result,
+		  success: function(data){
 
+			}
+		});
+		$(this).parent().fadeOut(300);
+		
+		
+	});
 	//open lateral menu on mobile
 	$hamburger_icon.on('click', function(event){
 		event.preventDefault();

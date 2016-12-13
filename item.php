@@ -5,5 +5,5 @@
 	if(Input::exists($requestType)){
 		$product->showByReference(Input::get('ref'));
 	} else {
-
+		
 	}

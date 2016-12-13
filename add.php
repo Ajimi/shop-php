@@ -9,14 +9,14 @@
 $product = new Product();
 
 try {
-	for($i = 0 ; $i < 10 ; $i++){
+	for($i = 0 ; $i < 30 ; $i++){
 	    $product->create(array(
 			'product_name' => $faker->firstName,
 			'product_price' => $faker->numberBetween(10,999),
 			'product_description' => $faker->paragraph,
 			'product_image' => 'http://placehold.it/50x80',
 			'product_reviews' => $faker->randomDigitNotNull,
-			'product_reference' => $faker->randomDigit(),
+			'product_reference' => $faker->numberBetween(0,19),
 			'product_quantity' => $faker->randomDigitNotNull()-1,
  			'shop_id' => $faker->randomNumber(2)
 			));

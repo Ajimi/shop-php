@@ -1,10 +1,10 @@
 <?php 
 	
 	require_once 'core/init.php';
-	$product = new Product();	
+	$cart = new Cart();	
 	if(Input::exists('get')){
 		$id = Input::get('add');
-		$product->incrementProductQuantity($id);
+		$cart->incrementProductQuantity($id);
 		
 	}
 ?>

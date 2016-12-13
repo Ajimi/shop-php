@@ -20,3 +20,18 @@ TASKS :
 	// Modify
 	OTHER TASKS :
 	1- MODIFY THE NAVBAR AND PUT EACH HTML CODE INTO A PHP FILE SO IT Become more dynamic
+
+	$_SESSION['product_'.$id] += 1; 
+
+	foreach($_SESSION as $name => $value){
+		if(substr($name,0,8) == 'product_') {
+			$length = strlen($name) - 8
+			$id = substr($name , 8 , $length);
+			query(sql);
+			
+			echo $name . $value;
+		}
+	}
+
+	substr(string , start , howmuch);
+
