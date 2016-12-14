@@ -15,11 +15,23 @@ TASKS :
 	2- 
 	3- 
 
-
+	TASKS :
+	Clear Not all the comments
+	Delete creative tim from header and footer
 	// DASHBOARD
 	// ADD
 	// DELETE
 	// Modify
+	// Dashboard
+	1- Create the UI
+	2- make the UI WITH PHP 
+	create "config.php"
+	3 	- DASHBOARD // index.Php
+		- Products // products.php
+		- ORDERS // Orders.php
+		- MAPS // location.php
+		- ADMIN USERS // user.php
+		- ORDERS // orders.php
 	
 	OTHER TASKS :
 	1- MODIFY THE NAVBAR AND PUT EACH HTML CODE INTO A PHP FILE SO IT Become more dynamic

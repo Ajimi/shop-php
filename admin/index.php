@@ -1,7 +1,8 @@
 <?php
 
-
+require_once 'config.php';
 require_once 'core/init.php';
+
 
 if(Session::exists('home')) {
     echo '<p>' . Session::flash('home'). '</p>';
@@ -19,6 +20,12 @@ if($user->isLoggedIn()) {
         <li><a href="changepassword.php">Change Password</a></li>
         <li><a href="logout.php">Log out</a></li>
     </ul>
+        
+    <?php include TEMPLATE_FRONT .DS. 'index' . DS . 'index_header.php'; ?>
+
+    <?php include TEMPLATE_FRONT . DS . 'index' . DS . 'index_content.php'; ?>
+
+    <?php include TEMPLATE_FRONT . DS . 'index' . DS . 'index_footer.php' ?>
 <?php
 
     if($user->hasPermission('admin')) {
@@ -28,3 +35,7 @@ if($user->isLoggedIn()) {
 } else {
     include 'login.php';
 }
+
+?>
+
+        
